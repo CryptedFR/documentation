@@ -1,0 +1,54 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+	--ifm-color-primary: #5f85db;
+	--ifm-color-primary-dark: #5477c5;
+	--ifm-color-primary-darker: #4a6ab0;
+	--ifm-color-primary-darkest: #405d9a;
+	--ifm-color-primary-light: #6b91e1;
+	--ifm-color-primary-lighter: #789ee7;
+	--ifm-color-primary-lightest: #86abea;
+	--ifm-code-font-size: 95%;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+	--ifm-color-primary: #5f85db;
+	--ifm-color-primary-dark: #5477c5;
+	--ifm-color-primary-darker: #4a6ab0;
+	--ifm-color-primary-darkest: #405d9a;
+	--ifm-color-primary-light: #6b91e1;
+	--ifm-color-primary-lighter: #789ee7;
+	--ifm-color-primary-lightest: #86abea;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.http-method {
+	display: inline-block;
+	padding: 0.2em 0.6em;
+	border-radius: 4px;
+	font-weight: bold;
+	color: #fff;
+	font-size: 0.9em;
+}
+
+.http-method.post {
+	background-color: #ffc107; /* Bleu */
+}
+
+.http-method.get {
+	background-color: #28a745; /* Vert */
+}
+
+.http-method.patch {
+	background-color: #ff9100; /* Jaune */
+}
+
+.http-method.delete {
+	background-color: #dc3545; /* Rouge */
+}
