@@ -1,6 +1,7 @@
 import Heading from "@theme/Heading";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import type { JSX } from "react";
 
 type FeatureItem = {
 	title: string;
@@ -10,32 +11,24 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
 	{
-		title: "Easy to Use",
-		Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+		title: "AdonisJS",
+		Svg: require("@site/static/img/adonis-logo.svg").default,
 		description: (
 			<>
-				Docusaurus was designed from the ground up to be easily installed and
-				used to get your website up and running quickly.
+				AdonisJS est un framework backend Node.js moderne, conçu pour être
+				rapide, robuste et facile à utiliser, avec une approche MVC élégante et
+				des outils prêts à l’emploi.
 			</>
 		),
 	},
 	{
-		title: "Focus on What Matters",
-		Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+		title: "Nuxt",
+		Svg: require("@site/static/img/nuxt-logo.svg").default,
 		description: (
 			<>
-				Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-				ahead and move your docs into the <code>docs</code> directory.
-			</>
-		),
-	},
-	{
-		title: "Powered by React",
-		Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
-		description: (
-			<>
-				Extend or customize your website layout by reusing React. Docusaurus can
-				be extended while reusing the same header and footer.
+				Nuxt est un framework frontend puissant basé sur Vue.js, qui simplifie
+				le développement d'applications performantes, optimisées pour le SEO et
+				prêtes pour le rendu côté serveur (SSR).
 			</>
 		),
 	},
@@ -45,7 +38,11 @@ function Feature({ title, Svg, description }: FeatureItem) {
 	return (
 		<div className={clsx("col col--4")}>
 			<div className="text--center">
-				<Svg className={styles.featureSvg} role="img" />
+				<Svg
+					className={styles.featureSvg}
+					role="img"
+					style={{ width: "100px", height: "100px" }}
+				/>
 			</div>
 			<div className="text--center padding-horiz--md">
 				<Heading as="h3">{title}</Heading>
@@ -59,7 +56,7 @@ export default function HomepageFeatures(): JSX.Element {
 	return (
 		<section className={styles.features}>
 			<div className="container">
-				<div className="row">
+				<div className="row" style={{ justifyContent: "space-evenly" }}>
 					{FeatureList.map((props) => (
 						<Feature key={props.title} {...props} />
 					))}

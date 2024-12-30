@@ -1,0 +1,61 @@
+---
+title: "Créer un utilisateur"
+slug: "creer-un-utilisateur"
+sidebar_position: 1
+---
+import HttpMethod from "@site/src/components/HttpMethod"
+
+
+# Créer un utilisateur
+
+Cette route permet de créer un nouvel utilisateur dans le système.
+
+## URL
+
+<HttpMethod method="POST" /> `/v1/user`
+
+## Corps de la requête
+
+| Champ            | Type     | Requis | Description                           |
+|------------------|----------|--------|---------------------------------------|
+| `username`       | `string` | Oui    | Nom d'utilisateur unique.            |
+| `email`          | `string` | Oui    | Adresse email de l'utilisateur.      |
+| `firstname`       | `string` | Oui    | Prénom de l'utilisateur.       |
+| `lastname`       | `string` | Oui    | Nom de l'utilisateur.       |
+| `password`       | `string` | Oui    | Mot de passe de l'utilisateur.       |
+| `password_confirmation`       | `string` | Oui    | Confirmation du mot de passe de l'utilisateur.       |
+| `birthdate`       | `date` | Oui    | Date de naissance de l'utilisateur.       |
+
+## Exemple
+
+```json
+{
+  "username": "johndoe123",
+  "email": "john.doe@gmail.com",
+  "firstname": "John",
+  "lastname": "Doe",
+  "birthdate": "1998-04-19",
+  "password": "Johndoe0419*",
+  "password_confirmation": "Johndoe0419*"
+}
+```
+
+## Réponse
+
+### Succès
+
+- **Code HTTP** : `201 Created`
+
+### Erreurs
+
+| Code HTTP | Message                       | Description                                         |
+|-----------|-------------------------------|-----------------------------------------------------|
+| `400`     | `ValidationError`            | Les données fournies sont invalides.               |
+| `409`     | `UserAlreadyExists`          | L'utilisateur avec cet email ou username existe déjà. |
+| `500`     | `InternalServerError`        | Une erreur interne s'est produite.                 |
+
+
+## Notes
+
+- Assurez-vous que l'email et l'username sont uniques et valides.
+- Le mot de passe doit respecter les critères de sécurité (longueur minimale, complexité).

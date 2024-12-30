@@ -1,0 +1,9 @@
+{
+	"label": "Utilisateur",
+	"position": 2,
+	"link": {
+		"type": "generated-index",
+		"slug": "/routes/utilisateur",
+		"description": "Routes pour les utilisateurs"
+	}
+}

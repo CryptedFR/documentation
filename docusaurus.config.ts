@@ -43,20 +43,7 @@ const config: Config = {
 					// Remove this to remove the "edit this page" links.
 					editUrl: "https://github.com/CryptedFR/documentation/",
 				},
-				blog: {
-					showReadingTime: true,
-					feedOptions: {
-						type: ["rss", "atom"],
-						xslt: true,
-					},
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/CryptedFR/documentation/",
-					// Useful options to enforce blogging best practices
-					onInlineTags: "warn",
-					onInlineAuthors: "warn",
-					onUntruncatedBlogPosts: "warn",
-				},
+				blog: false,
 				theme: {
 					customCss: "./src/css/custom.css",
 				},
@@ -66,21 +53,20 @@ const config: Config = {
 
 	themeConfig: {
 		// Replace with your project's social card
-		image: "img/docusaurus-social-card.jpg",
+		image: "img/crypted-social-card.jpg",
 		navbar: {
 			title: "Crypted",
 			logo: {
-				alt: "My Site Logo",
+				alt: "Crypted Logo",
 				src: "img/logo.svg",
 			},
 			items: [
 				{
 					type: "docSidebar",
-					sidebarId: "tutorialSidebar",
+					sidebarId: "docsSidebar",
 					position: "left",
-					label: "Tutorial",
+					label: "Docs",
 				},
-				{ to: "/blog", label: "Blog", position: "left" },
 				{
 					href: "https://github.com/CryptedFR",
 					label: "GitHub",
@@ -95,18 +81,14 @@ const config: Config = {
 					title: "Docs",
 					items: [
 						{
-							label: "Tutorial",
-							to: "/docs/intro",
+							label: "Docs",
+							to: "/docs/prerequis-et-installation",
 						},
 					],
 				},
 				{
 					title: "More",
 					items: [
-						{
-							label: "Blog",
-							to: "/blog",
-						},
 						{
 							label: "GitHub",
 							href: "https://github.com/CryptedFR/documentation/",

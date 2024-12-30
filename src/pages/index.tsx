@@ -6,6 +6,7 @@ import Layout from "@theme/Layout";
 import clsx from "clsx";
 
 import styles from "./index.module.css";
+import type { JSX } from "react";
 
 function HomepageHeader() {
 	const { siteConfig } = useDocusaurusContext();
@@ -19,9 +20,9 @@ function HomepageHeader() {
 				<div className={styles.buttons}>
 					<Link
 						className="button button--secondary button--lg"
-						to="/docs/intro"
+						to="/docs/prerequis-et-installation"
 					>
-						Docusaurus Tutorial - 5min ⏱️
+						🚧 Prérequis et installation 🚧
 					</Link>
 				</div>
 			</div>
@@ -30,12 +31,8 @@ function HomepageHeader() {
 }
 
 export default function Home(): JSX.Element {
-	const { siteConfig } = useDocusaurusContext();
 	return (
-		<Layout
-			title={`Hello from ${siteConfig.title}`}
-			description="Description will go into a meta tag in <head />"
-		>
+		<Layout description="Documentation officielle de l'application de chat Crypted">
 			<HomepageHeader />
 			<main>
 				<HomepageFeatures />
