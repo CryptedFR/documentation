@@ -27,6 +27,11 @@
 	--ifm-color-primary-lightest: #86abea;
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+.http-route {
+	display: flex;
+	gap: 5px;
+	font-size: 1.8em;
+}
 
 .http-method {
 	display: inline-block;
@@ -46,6 +51,10 @@
 }
 
 .http-method.patch {
+	background-color: #ff9100; /* Jaune */
+}
+
+.http-method.put {
 	background-color: #ff9100; /* Jaune */
 }
 
