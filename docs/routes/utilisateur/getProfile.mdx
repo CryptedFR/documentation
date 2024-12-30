@@ -1,0 +1,79 @@
+---
+title: "Récupérer un utilisateur"
+slug: "recuperer-un-utilisateur"
+sidebar_position: 3
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Récupérer un utilisateur
+
+Cette route permet de créer un nouvel utilisateur dans le système.
+
+## URL 
+<HttpMethod method="GET" route="/v1/user/me"/>
+
+
+
+## En-têtes de la requête
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+## Réponse
+
+### Succès
+
+- **Code HTTP** : `200 OK`
+
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `200`          | Code HTTP de la réponse. |
+| `code`     | `SUCCESS`        | Code success.                |
+| `data`     | `User`        | L'utilisateur actuellement authentifié.                |
+
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "success",
+  "statusCode": 200,
+  "code": "SUCCESS",
+  "data": {
+    "id": 1,
+    "username": "johndoe123",
+    "email": "john.doe@gmail.com",
+    "createdAt": "2024-12-30T20:24:02.191+00:00",
+    "updatedAt": "2024-12-30T20:24:02.191+00:00",
+    "firstname": "John",
+    "lastname": "Doe",
+    "avatar": null,
+    "birthDate": "1998-04-19T00:00:00.000Z"
+  }
+}
+```
+
+### Erreur
+
+- **Code HTTP** : `401 Unauthorized`
+
+| Nom      |        Valeur   ou type               | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `error`            | Status de la réponse.               |
+| `statusCode`     | `401`          | Code HTTP de la réponse. |
+| `code`     | `E_UNAUTHORIZED_ACCESS`        | Code erreur qui permet d'identifier l'erreur                |
+| `message`     | `Unauthorized access`        | Message de l'erreur                |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "error",
+  "statusCode": 401,
+  "code": "E_UNAUTHORIZED_ACCESS",
+  "message": "Unauthorized access"
+}
+```
