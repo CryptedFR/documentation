@@ -1,0 +1,89 @@
+---
+title: "Ajouter un avatar"
+slug: "ajouter-un-avatar"
+sidebar_position: 7
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Ajouter un avatar
+
+Cette route permet d'ajouter un avatar à l'utilisateur authentifié.
+
+## URL
+
+<HttpMethod method="PUT" route="/v1/user/avatar" />
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+## Corps de la requête
+
+| Champ            | Type     | Requis | Description                           |
+|------------------|----------|--------|---------------------------------------|
+| `avatar`          | `File` | Oui    | Avatar de l'utilisateur. (Taille : `2mb`, Extensions : `png`, `jpg`, `jpeg`, `webp`) 
+
+## Réponse
+
+### Succès
+
+- **Code HTTP** : `200 OK`
+
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `200`          | Code HTTP de la réponse. |
+| `code`     | `S_AVATAR_UPLOADED`        | Code success.                |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "success",
+  "statusCode": 200,
+  "code": "S_AVATAR_UPLOADED"
+}
+```
+
+### Erreurs
+
+- **Code HTTP** : `401 Unauthorized` ou `422 Unprocessable Entity`
+
+| Nom      |        Valeur   ou type               | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `error`            | Status de la réponse.               |
+| `statusCode`     | `401` ou `422`        | Code HTTP de la réponse. |
+| `code`     | `E_UNAUTHORIZED_ACCESS` ou `E_VALIDATION_ERROR`     | Code erreur qui permet d'identifier l'erreur                |
+| `message`     | `Unauthorized access`  ou `E_VALIDATION_ERROR`     | Message de l'erreur     |
+| `errors`     | `Array`     | Tableau des erreurs de validation     |
+
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "error",
+  "statusCode": 401,
+  "code": "E_UNAUTHORIZED_ACCESS",
+  "message": "Unauthorized access"
+}
+
+// ou
+
+{
+  "status": "error",
+  "statusCode": 422,
+  "code": "E_VALIDATION_ERROR",
+  "message": "Validation failure",
+  "errors": [
+    {
+      "code": "file.size",
+      "field": "avatar"
+    }
+  ]
+}
+```

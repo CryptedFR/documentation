@@ -1,0 +1,93 @@
+---
+title: "Connecter un utilisateur"
+slug: "connecter-un-utilisateur"
+sidebar_position: 2
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Connecter un utilisateur
+
+Cette route permet de connecter un utilisateur.
+
+## URL
+
+<HttpMethod method="POST" route="/v1/user/auth"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+
+## Corps de la requête
+
+| Champ            | Type     | Requis | Description                           |
+|------------------|----------|--------|---------------------------------------|
+| `identifier`       | `string` | Oui    | Nom d'utilisateur ou email.            |
+| `password`          | `string` | Oui    | Mot de passe de l'utilisateur.      |
+
+## Exemple
+
+```json
+{
+  "identifier": "johndoe123", // ou "john.doe@gmail.com",
+  "password": "Johndoe0419*",
+}
+```
+
+## Réponse
+
+
+### Succès
+
+- **Code HTTP** : `201 Created`
+
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `201`          | Code HTTP de la réponse. |
+| `code`     | `S_AUTHENTICATION`        | Code success.                |
+| `data`     | `AccessToken`        | Jeton OAT d'authentification.                |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "success",
+  "statusCode": 201,
+  "code": "S_AUTHENTICATION",
+  "data": {
+    "type": "bearer",
+    "name": null,
+    "token": "oat_MQ.WGl0MnNmRFhWRzJGNWlLVHhqUmY4Vm9RZkRPZV94MEp0VmkwLWw3YzIxNDI0NzQ1NjE",
+    "abilities": [
+      "*"
+    ],
+    "lastUsedAt": null,
+    "expiresAt": "2025-01-29T20:24:21.481Z"
+  }
+}
+```
+
+### Erreurs
+
+- **Code HTTP** : `400 Bad Request`
+
+| Nom      |        Valeur   ou type               | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `error`            | Status de la réponse.               |
+| `statusCode`     | `400`          | Code HTTP de la réponse. |
+| `code`     | `E_INVALID_CREDENTIALS`        | Code erreur qui permet d'identifier l'erreur                |
+| `message`     | `Invalid user credentials`        | Message de l'erreur     |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "error",
+  "statusCode": 400,
+  "code": "E_INVALID_CREDENTIALS",
+  "message": "Invalid user credentials"
+}
+```

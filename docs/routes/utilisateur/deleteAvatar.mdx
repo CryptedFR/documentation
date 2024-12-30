@@ -1,0 +1,67 @@
+---
+title: "Supprimer l'avatar"
+slug: "supprimer-avatar"
+sidebar_position: 8
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Supprimer l'utilisateur
+
+Cette route permet de supprimer l'avatar de l'utilisateur authentifié.
+
+## URL
+
+<HttpMethod method="DELETE" route="/v1/user/avatar" />
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+## Réponse
+
+### Succès
+
+- **Code HTTP** : `200 OK`
+
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `200`          | Code HTTP de la réponse. |
+| `code`     | `S_AVATAR_DELETED`        | Code success.                |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "success",
+  "statusCode": 200,
+  "code": "S_AVATAR_DELETED"
+}
+```
+
+### Erreurs
+
+- **Code HTTP** : `401 Unauthorized`
+
+| Nom      |        Valeur   ou type               | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `error`            | Status de la réponse.               |
+| `statusCode`     | `401`        | Code HTTP de la réponse. |
+| `code`     | `E_UNAUTHORIZED_ACCESS`     | Code erreur qui permet d'identifier l'erreur                |
+| `message`     | `Unauthorized access`       | Message de l'erreur     |
+
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "error",
+  "statusCode": 401,
+  "code": "E_UNAUTHORIZED_ACCESS",
+  "message": "Unauthorized access"
+}
+```

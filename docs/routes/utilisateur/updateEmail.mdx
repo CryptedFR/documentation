@@ -1,0 +1,96 @@
+---
+title: "Modifier l'email"
+slug: "modifier-email-utilisateur"
+sidebar_position: 4
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Modifier l'email
+
+Cette route permet de modifier l'email de l'utilisateur authentifié.
+
+## URL
+
+<HttpMethod method="PATCH" route="/v1/user/email" />
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+## Corps de la requête
+
+| Champ            | Type     | Requis | Description                           |
+|------------------|----------|--------|---------------------------------------|
+| `email`          | `string` | Oui    | Nouvelle adresse email de l'utilisateur.      |
+
+### Exemple
+
+```json
+{
+  "email": "john.doe123@gmail.com",
+}
+```
+
+## Réponse
+
+### Succès
+
+- **Code HTTP** : `200 OK`
+
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `200`          | Code HTTP de la réponse. |
+| `code`     | `S_EMAIL_UPDATED`        | Code success.                |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "success",
+  "statusCode": 200,
+  "code": "S_EMAIL_UPDATED"
+}
+```
+
+### Erreurs
+
+- **Code HTTP** : `401 Unauthorized` ou `422 Unprocessable Entity`
+
+| Nom      |        Valeur   ou type               | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `error`            | Status de la réponse.               |
+| `statusCode`     | `401` ou `422`        | Code HTTP de la réponse. |
+| `code`     | `E_UNAUTHORIZED_ACCESS`  ou `E_VALIDATION_ERROR`      | Code erreur qui permet d'identifier l'erreur                |
+| `message`     | `Unauthorized access` ou `Validation failure`        | Message de l'erreur     |
+
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "error",
+  "statusCode": 401,
+  "code": "E_UNAUTHORIZED_ACCESS",
+  "message": "Unauthorized access"
+}
+
+// ou
+
+{
+  "status": "error",
+  "statusCode": 422,
+  "code": "E_VALIDATION_ERROR",
+  "message": "Validation failure",
+  "errors": [
+    {
+      "code": "unique",
+      "field": "email"
+    }
+  ]
+}
+```

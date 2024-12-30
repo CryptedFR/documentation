@@ -3,16 +3,22 @@ title: "Créer un utilisateur"
 slug: "creer-un-utilisateur"
 sidebar_position: 1
 ---
-import HttpMethod from "@site/src/components/HttpMethod"
+import HttpMethod from "@site/src/components/HttpRoute"
 
 
 # Créer un utilisateur
 
-Cette route permet de créer un nouvel utilisateur dans le système.
+Cette route permet de créer un nouvel utilisateur.
 
 ## URL
 
-<HttpMethod method="POST" /> `/v1/user`
+<HttpMethod method="POST" route="/v1/user" />
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
 
 ## Corps de la requête
 
@@ -26,7 +32,7 @@ Cette route permet de créer un nouvel utilisateur dans le système.
 | `password_confirmation`       | `string` | Oui    | Confirmation du mot de passe de l'utilisateur.       |
 | `birthdate`       | `date` | Oui    | Date de naissance de l'utilisateur.       |
 
-## Exemple
+### Exemple
 
 ```json
 {
@@ -34,9 +40,9 @@ Cette route permet de créer un nouvel utilisateur dans le système.
   "email": "john.doe@gmail.com",
   "firstname": "John",
   "lastname": "Doe",
-  "birthdate": "1998-04-19",
   "password": "Johndoe0419*",
-  "password_confirmation": "Johndoe0419*"
+  "password_confirmation": "Johndoe0419*",
+  "birthdate": "1998-04-19"
 }
 ```
 
@@ -46,16 +52,67 @@ Cette route permet de créer un nouvel utilisateur dans le système.
 
 - **Code HTTP** : `201 Created`
 
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `201`          | Code HTTP de la réponse. |
+| `code`     | `S_USER_CREATED`        | Code success.                |
+
+- **Exemple JSON :**
+
+```json
+{
+  "status": "success",
+  "statusCode": 201,
+  "code": "S_USER_CREATED"
+}
+```
+
 ### Erreurs
 
-| Code HTTP | Message                       | Description                                         |
-|-----------|-------------------------------|-----------------------------------------------------|
-| `400`     | `ValidationError`            | Les données fournies sont invalides.               |
-| `409`     | `UserAlreadyExists`          | L'utilisateur avec cet email ou username existe déjà. |
-| `500`     | `InternalServerError`        | Une erreur interne s'est produite.                 |
+- **Code HTTP** : `422 Unprocessable Entity`
+
+| Nom      |        Valeur   ou type               | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `error`            | Status de la réponse.               |
+| `statusCode`     | `422`          | Code HTTP de la réponse. |
+| `code`     | `E_VALIDATION_ERROR`        | Code erreur qui permet d'identifier l'erreur                |
+| `message`     | `Validation failure`        | Message de l'erreur     |
+| `errors`     | `Array`        | Tableau de toutes les erreurs de validation     |
+
+- **Erreurs de validation :**
+
+| **Code**       | **Field**    | **Description**                                                                 |
+|----------------|--------------|---------------------------------------------------------------------------------|
+| `regex`        | `username`   | Le champ `username` ne respecte pas le format attendu (par exemple, caractères interdits). |
+| `unique`        | `username`   | Le champ `username` n'est pas unique (par exemple, un autre utilisateur a le même). |
+| `email`        | `email`      | Le champ `email` n'est pas une adresse email valide.                             |
+| `unique`        | `email`      | Le champ `email` n'est pas unique (par exemple, un autre utilisateur a la même adresse email).                             |
+| `regex`    | `password`   | Le mot de passe ne respecte pas le format attendu (par exemple, caractères spéciaux, taille de 8 caractères ou symboles). |
+| `confirmed`    | `password`   | Le mot de passe n'est pas confirmé correctement (mismatch avec le champ de confirmation). |
+| `regex`        | `firstname`  | Le `firstname` contient des caractères invalides ou ne respecte pas le format attendu. |
+| `regex`        | `lastname`   | Le `lastname` contient des caractères invalides ou ne respecte pas le format attendu. |
+| `date`         | `birthdate`  | La date de naissance n'est pas une date valide ou respecte un format incorrect. |
+| `age`         | `birthdate`  | L'utilisateur n'a pas l'âge requis pour s'inscrire (13 ans). |
 
 
-## Notes
+- **Exemple JSON :**
 
-- Assurez-vous que l'email et l'username sont uniques et valides.
-- Le mot de passe doit respecter les critères de sécurité (longueur minimale, complexité).
+```json
+{
+  "status": "error",
+  "statusCode": 422,
+  "code": "E_VALIDATION_ERROR",
+  "message": "Validation failure",
+  "errors": [
+    {
+      "code": "regex",
+      "field": "username"
+    },
+    {
+      "code": "confirmed",
+      "field": "password"
+    },
+  ]
+}
+```
