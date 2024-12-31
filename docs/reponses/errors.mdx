@@ -1,0 +1,68 @@
+---
+title: "Erreurs"
+slug: "erreurs"
+sidebar_position: 2
+---
+
+# Erreurs
+
+Les réponses errors suivent une structure standard pour indiquer une opération non réussie.
+
+## Structure générale
+
+| Nom          | Type       | Description                               |
+|--------------|------------|-------------------------------------------|
+| `status`     | `string`   | Toujours `error`.                      |
+| `statusCode` | `integer`  | Code HTTP correspondant à la réponse.    |
+| `code`       | `string`   | Code spécifique à l'erreur.               |
+| `message`       | `object`   | Message correspondant à l'erreur.     |
+| `errors`       | `Array`   | (Optionnel) Un tableau d'erreurs de validation.     |
+
+## Exemple
+
+```json
+{
+  "status": "error",
+  "statusCode": 400,
+  "code": "E_BAD_REQUEST",
+  "message": "Invalid input data",
+  "errors": [
+    {
+      "field": "username",
+      "code": "regex"
+    },
+    {
+      "field": "email",
+      "code": "unique"
+    }
+  ]
+}
+```
+
+## Erreurs de validation
+
+| Code       | Field    | Description                                                                 |
+|----------------|--------------|---------------------------------------------------------------------------------|
+| `regex`        | `username`   | Le champ `username` ne respecte pas le format attendu (par exemple, caractères interdits). |
+| `unique`        | `username`   | Le champ `username` n'est pas unique (par exemple, un autre utilisateur a le même). |
+| `email`        | `email`      | Le champ `email` n'est pas une adresse email valide.                             |
+| `unique`        | `email`      | Le champ `email` n'est pas unique (par exemple, un autre utilisateur a la même adresse email).                             |
+| `regex`    | `password`   | Le mot de passe ne respecte pas le format attendu (par exemple, caractères spéciaux, taille de 8 caractères ou symboles). |
+| `confirmed`    | `password`   | Le mot de passe n'est pas confirmé correctement (mismatch avec le champ de confirmation). |
+| `regex`        | `firstname`  | Le `firstname` contient des caractères invalides ou ne respecte pas le format attendu. |
+| `regex`        | `lastname`   | Le `lastname` contient des caractères invalides ou ne respecte pas le format attendu. |
+| `date`         | `birthdate`  | La date de naissance n'est pas une date valide ou respecte un format incorrect. |
+| `age`         | `birthdate`  | L'utilisateur n'a pas l'âge requis pour s'inscrire (13 ans). |
+
+
+## Codes de réponse succès
+
+| Nom          | Code HTTP | Description                               |
+|--------------|-----------|--------------------------------|
+| `E_VALIDATION_ERROR`    | `422 Unprocessable Entity` |Code d'erreur pour la validation du corps de la requête.                      |
+| `E_UNAUTHORIZED` | `401 Unauthorized` | Token OAT non valide ou manquant.    |
+| `E_NOT_FOUND`       | `404 Not Found` | La ressource n'a pas été trouvée.               |
+| `E_SERVER_ERROR`      | `500 Server Error` | Erreur coté serveur.     |
+| `E_BAD_REQUEST`      | `400 Bad Request` | Mauvaise requête.     |
+| `E_AVATAR_IS_NULL`   |  `403 Forbidden` |  L'avatar est `null`.     |
+| `E_INVALID_OLD_PASSWORD`    | `422 Unprocessable Entity` |  L'ancien mot de passe n'est pas correcte.     |

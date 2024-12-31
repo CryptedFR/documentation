@@ -1,0 +1,45 @@
+---
+title: "Succès"
+slug: "succes"
+sidebar_position: 1
+---
+
+# Succès
+
+Les réponses success suivent une structure standard pour indiquer une opération réussie.
+
+## Structure générale
+
+| Nom          | Type       | Description                               |
+|--------------|------------|-------------------------------------------|
+| `status`     | `string`   | Toujours `success`.                      |
+| `statusCode` | `integer`  | Code HTTP correspondant à la réponse.    |
+| `code`       | `string`   | Code spécifique au succès.               |
+| `data`       | `object`   | (Optionnel) Données retournées (Utilisateur, chat, etc).     |
+| `token`       | `object`   | (Optionnel) Le token OAT lors de l'authentification.     |
+
+## Exemple
+
+```json
+{
+  "status": "success",
+  "statusCode": 200,
+  "code": "S_LOGOUT",
+}
+```
+
+## Codes de réponse succès
+
+| Nom          | Code HTTP | Description                               |
+|--------------|-----------|--------------------------------|
+| `SUCCESS`    | `200 OK` |Code générale quand aucun autre code n'est associé.                      |
+| `S_AUTHENTICATION` | `201 Created` |Authentification de l'utilisateur réussie.    |
+| `S_LOGOUT`       | `200 OK` |Déconnexion de l'utilisateur réussie.               |
+| `S_USER_CREATED`      | `201 Created` | Création de l'utilisateur réussie.     |
+| `S_USER_DELETED`      | `200 OK` | Suppression de l'utilisateur réussie.     |
+| `S_LASTNAME_UPDATED`   |  `200 OK` |  Modification du nom de famille réussie.     |
+| `S_PASSWORD_UPDATED`    | `200 OK` |  Changement de mot de passe réussi.     |
+| `S_USERNAME_UPDATED`     | `200 OK` |  Modification du nom d'utilisateur réussie.     |
+| `S_EMAIL_UPDATED`      | `200 OK` |  Changement de l'adresse email réussi.     |
+| `S_AVATAR_UPLOADED`    | `200 OK` |  Ajout d'un avatar réussi.     |
+| `S_AVATAR_DELETED`     | `200 OK`  |  Suppression de l'avatar réussie.     |
