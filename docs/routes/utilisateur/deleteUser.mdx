@@ -45,23 +45,4 @@ Cette route permet de supprimer l'utilisateur authentifié.
 
 ### Erreurs
 
-- **Code HTTP** : `401 Unauthorized`
-
-| Nom      |        Valeur   ou type               | Description                                         |
-|-----------|------------------------------|-----------------------------------------------------|
-| `status`     | `error`            | Status de la réponse.               |
-| `statusCode`     | `401`        | Code HTTP de la réponse. |
-| `code`     | `E_UNAUTHORIZED_ACCESS`     | Code erreur qui permet d'identifier l'erreur                |
-| `message`     | `Unauthorized access`       | Message de l'erreur     |
-
-
-- **Exemple JSON :**
-
-```json
-{
-  "status": "error",
-  "statusCode": 401,
-  "code": "E_UNAUTHORIZED_ACCESS",
-  "message": "Unauthorized access"
-}
-```
+Voir [Erreurs](../../reponses/errors.mdx)

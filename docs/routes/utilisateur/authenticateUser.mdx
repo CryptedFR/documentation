@@ -72,22 +72,4 @@ Cette route permet de connecter un utilisateur.
 
 ### Erreurs
 
-- **Code HTTP** : `400 Bad Request`
-
-| Nom      |        Valeur   ou type               | Description                                         |
-|-----------|------------------------------|-----------------------------------------------------|
-| `status`     | `error`            | Status de la réponse.               |
-| `statusCode`     | `400`          | Code HTTP de la réponse. |
-| `code`     | `E_INVALID_CREDENTIALS`        | Code erreur qui permet d'identifier l'erreur                |
-| `message`     | `Invalid user credentials`        | Message de l'erreur     |
-
-- **Exemple JSON :**
-
-```json
-{
-  "status": "error",
-  "statusCode": 400,
-  "code": "E_INVALID_CREDENTIALS",
-  "message": "Invalid user credentials"
-}
-```
+Voir [Erreurs](../../reponses/errors.mdx)

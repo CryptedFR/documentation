@@ -51,39 +51,4 @@ Cette route permet d'ajouter un avatar à l'utilisateur authentifié.
 
 ### Erreurs
 
-- **Code HTTP** : `401 Unauthorized` ou `422 Unprocessable Entity`
-
-| Nom      |        Valeur   ou type               | Description                                         |
-|-----------|------------------------------|-----------------------------------------------------|
-| `status`     | `error`            | Status de la réponse.               |
-| `statusCode`     | `401` ou `422`        | Code HTTP de la réponse. |
-| `code`     | `E_UNAUTHORIZED_ACCESS` ou `E_VALIDATION_ERROR`     | Code erreur qui permet d'identifier l'erreur                |
-| `message`     | `Unauthorized access`  ou `E_VALIDATION_ERROR`     | Message de l'erreur     |
-| `errors`     | `Array`     | Tableau des erreurs de validation     |
-
-
-- **Exemple JSON :**
-
-```json
-{
-  "status": "error",
-  "statusCode": 401,
-  "code": "E_UNAUTHORIZED_ACCESS",
-  "message": "Unauthorized access"
-}
-
-// ou
-
-{
-  "status": "error",
-  "statusCode": 422,
-  "code": "E_VALIDATION_ERROR",
-  "message": "Validation failure",
-  "errors": [
-    {
-      "code": "file.size",
-      "field": "avatar"
-    }
-  ]
-}
-```
+Voir [Erreurs](../../reponses/errors.mdx)
