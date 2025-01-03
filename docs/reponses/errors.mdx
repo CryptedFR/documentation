@@ -66,3 +66,7 @@ Les réponses errors suivent une structure standard pour indiquer une opération
 | `E_BAD_REQUEST`      | `400 Bad Request` | Mauvaise requête.     |
 | `E_AVATAR_IS_NULL`   |  `403 Forbidden` |  L'avatar est `null`.     |
 | `E_INVALID_OLD_PASSWORD`    | `422 Unprocessable Entity` |  L'ancien mot de passe n'est pas correcte.     |
+| `E_FRIENDSHIP_USER_IS_NOT_BLOCKED`    | `403 Forbidden` |  L'utilisateur n'est pas bloqué actuellement.     |
+| `E_FRIENDSHIP_USER_IS_ALREADY_BLOCKED`    | `403 Forbidden` |  L'utilisateur est déjà bloqué.     |
+| `E_FRIENDSHIP_REQUEST_NOT_PENDING`    | `403 Forbidden` |  La requête n'est pas en attente.     |
+| `E_FRIENDSHIP_REQUEST_NOT_FOUND`    | `422 Unprocessable Entity` |  La requête n'a pas été trouvée.     |

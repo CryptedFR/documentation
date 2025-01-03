@@ -1,0 +1,22 @@
+---
+title: "Lister les demandes d'amis reçues"
+slug: "lister-les-demandes-amis-recues"
+sidebar_position: 2
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Lister les demandes d'amis reçues
+
+Cette route permet de lister les demandes d'amis reçues.
+
+## URL
+
+<HttpMethod method="GET" route="/v1/friendship/received"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |

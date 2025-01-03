@@ -1,0 +1,30 @@
+---
+title: "Débloquer un utilisateur"
+slug: "debloquer-un-utilisateur"
+sidebar_position: 9
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Débloquer un utilisateur
+
+Cette route permet de débloquer un utilisateur.
+
+## URL
+
+<HttpMethod method="PATCH" route="/v1/friendship/unblock/:userId"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+
+## Réponse
+
+
+### Erreurs
+
+Voir [Erreurs](../../reponses/errors.mdx)

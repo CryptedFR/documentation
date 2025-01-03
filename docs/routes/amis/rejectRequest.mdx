@@ -1,0 +1,30 @@
+---
+title: "Rejeter une demande d'ami"
+slug: "rejeter-une-demande-ami"
+sidebar_position: 7
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Rejeter une demande d'ami
+
+Cette route permet de rejeter une demande d'ami.
+
+## URL
+
+<HttpMethod method="PATCH" route="/v1/friendship/reject/:requestId"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+
+## Réponse
+
+
+### Erreurs
+
+Voir [Erreurs](../../reponses/errors.mdx)

@@ -1,0 +1,9 @@
+{
+	"label": "Amis",
+	"position": 2,
+	"link": {
+		"type": "generated-index",
+		"slug": "/routes/amis",
+		"description": "Routes pour les amis"
+	}
+}

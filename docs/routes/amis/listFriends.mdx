@@ -1,0 +1,22 @@
+---
+title: "Lister les amis"
+slug: "lister-les-amis"
+sidebar_position: 5
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Lister les amis
+
+Cette route permet de lister les amis.
+
+## URL
+
+<HttpMethod method="GET" route="/v1/friendship/list"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |

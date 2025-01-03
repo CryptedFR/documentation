@@ -1,0 +1,36 @@
+---
+title: "Accepter une demande d'amis"
+slug: "accepter-une-demande-amis"
+sidebar_position: 4
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Accepter une demande d'amis
+
+Cette route permet d'accepter une demande d'amis d'un autre utilisateur.
+
+## URL
+
+<HttpMethod method="PATCH" route="/v1/friendship/accept/:requestId"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+## Corps de la requête
+
+| Champ            | Type     | Requis | Description                           |
+|------------------|----------|--------|---------------------------------------|
+| `friendId`       | `number` | Oui    | ID de l'utilisateur cible.            |
+
+
+## Réponse
+
+
+### Erreurs
+
+Voir [Erreurs](../../reponses/errors.mdx)

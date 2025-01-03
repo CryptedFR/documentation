@@ -1,0 +1,30 @@
+---
+title: "Supprimer un ami"
+slug: "supprimer-un-ami"
+sidebar_position: 6
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Supprimer un ami
+
+Cette route permet de supprimer ami.
+
+## URL
+
+<HttpMethod method="DELETE" route="/v1/friendship/friend/:requestId"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+
+## Réponse
+
+
+### Erreurs
+
+Voir [Erreurs](../../reponses/errors.mdx)

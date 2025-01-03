@@ -1,0 +1,22 @@
+---
+title: "Lister les utilisateurs bloqués"
+slug: "lister-les-utilisateurs-bloques"
+sidebar_position: 10
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Lister les utilisateurs bloqués
+
+Cette route permet de lister les utilisateurs bloqués.
+
+## URL
+
+<HttpMethod method="GET" route="/v1/friendship/block/list"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |

@@ -1,0 +1,53 @@
+---
+title: "Envoyer une requête d'amis"
+slug: "envoyer-une-requete-amis"
+sidebar_position: 1
+---
+import HttpMethod from "@site/src/components/HttpRoute"
+
+
+# Envoyer une requête d'amis
+
+Cette route permet d'envoyer une requête d'amis à un autre utilisateur.
+
+## URL
+
+<HttpMethod method="POST" route="/v1/friendship/request"/>
+
+## En-têtes de la requête
+
+| Nom      |        Valeur ou type                  |
+|-----------|------------------------------|
+| `Content-Type`     | `application/json`            |
+| `Authorization`     | `Bearer <token>`            |
+
+## Corps de la requête
+
+| Champ            | Type     | Requis | Description                           |
+|------------------|----------|--------|---------------------------------------|
+| `friendId`       | `number` | Oui    | ID de l'utilisateur cible.            |
+
+## Exemple
+
+```json
+{
+  "friendId": 2,
+}
+```
+
+## Réponse
+
+
+### Succès
+
+- **Code HTTP** : `201 Created`
+
+| Nom      |        Valeur ou type                  | Description                                         |
+|-----------|------------------------------|-----------------------------------------------------|
+| `status`     | `success`            | Status de la réponse.               |
+| `statusCode`     | `201`          | Code HTTP de la réponse. |
+| `code`     | `S_FRIENDSHIP_REQUEST_SENT`        | Code success.                |
+
+### Erreurs
+
+Voir [Erreurs](../../reponses/errors.mdx)
